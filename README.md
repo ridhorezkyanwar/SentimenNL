@@ -1,34 +1,30 @@
-# SentimenNLP
+﻿# SentimenNLP
 
-Analisis Sentimen Review Shopee Bahasa Indonesia dengan NLP dan Machine Learning.
+## Description
 
-## Deskripsi
+SentimenNLP is a sentiment analysis project for Shopee reviews in Indonesian. It demonstrates an end-to-end NLP workflow: loading and cleaning review data, normalizing slang, extracting TF-IDF features, training classification models, and evaluating performance.
 
-Project ini membangun pipeline end-to-end untuk analisis sentimen review Shopee dalam Bahasa Indonesia. Mulai dari muat dataset, pembersihan teks, normalisasi slang, ekstraksi fitur TF-IDF, pelatihan model klasifikasi, hingga evaluasi dan prediksi real-time.
+## Project Overview
 
-## Judul Project
+This repository includes:
 
-SentimenNLP
+- `dataset_shopee.csv`: Shopee review dataset
+- `pelatihan_dan_inferensi.ipynb`: notebook for training, evaluation, and inference
+- `scraping.py`: optional script for collecting additional review data
+- `requirements.txt`: Python dependencies
+- `model_sentimen_terbaik.h5`: saved model produced by the notebook
 
-## Fitur Utama
+## Key Features
 
-- Pembersihan dan normalisasi teks bahasa Indonesia
-- Penanganan kata slang Shopee dan stopword sederhana
-- Pembagian data training / testing secara stratified
-- Ekstraksi fitur menggunakan TF-IDF
-- Pelatihan beberapa model: Logistic Regression, Random Forest, dan Deep Neural Network
-- Evaluasi dengan akurasi, precision, recall, F1-score, dan confusion matrix
-- Contoh inferensi real-time dengan teks review baru
+- Indonesian text preprocessing and normalization
+- Handling of Shopee-specific slang and basic stopwords
+- Stratified train/test split
+- TF-IDF feature extraction with n-grams
+- Training multiple models: Logistic Regression, Random Forest, Deep Neural Network
+- Evaluation with accuracy, precision, recall, F1-score, and confusion matrix
+- Real-time inference examples using saved model
 
-## Struktur Folder
-
-- `dataset_shopee.csv`  : dataset review Shopee
-- `pelatihan_dan_inferensi.ipynb`  : notebook end-to-end untuk training, evaluasi, dan inference
-- `scraping.py`  : script scraping data review (jika ingin mengumpulkan data tambahan)
-- `requirements.txt`  : dependensi Python untuk menjalankan project
-- `model_sentimen_terbaik.h5`  : model hasil pelatihan yang disimpan dari notebook
-
-## Teknologi
+## Technology Stack
 
 - Python 3
 - pandas
@@ -39,50 +35,57 @@ SentimenNLP
 - seaborn
 - google-play-scraper
 
-## Langkah Persiapan dan Instalasi
+## Installation
 
-1. Buka terminal di folder project.
-2. Buat virtual environment (opsional tetapi direkomendasikan):
+1. Open a terminal in the project folder.
+2. Create and activate a virtual environment (recommended):
 
    ```powershell
    python -m venv .venv
    .\.venv\Scripts\Activate
    ```
 
-3. Install dependensi:
+3. Install dependencies:
 
    ```powershell
    pip install -r requirements.txt
    ```
 
-4. Jalankan notebook untuk melihat seluruh proses:
+4. Start the notebook:
 
    ```powershell
    jupyter notebook pelatihan_dan_inferensi.ipynb
    ```
 
-## Cara Menjalankan
+## Usage
 
-- Buka `pelatihan_dan_inferensi.ipynb` dan jalankan sel secara berurutan.
-- Notebook memuat dataset, membersihkan teks, melatih model, mengevaluasi performa, lalu melakukan inferensi pada kalimat contoh.
-- Jika ingin menjalankan model secara manual, Anda dapat memuat `model_sentimen_terbaik.h5` di dalam Python dan menerapkan `vectorizer` yang tersimpan.
+- Open `pelatihan_dan_inferensi.ipynb` and run the cells in order.
+- The notebook loads the dataset, cleans the text, trains models, evaluates performance, and runs example predictions.
+- To use the saved model manually, load `model_sentimen_terbaik.h5` with Python and apply the saved TF-IDF vectorizer.
 
-## Hasil Utama
+## Results
 
-Notebook menampilkan hasil berikut (perkiraan berdasarkan output latihan):
+The notebook reports:
 
-- Akurasi testing model utama: sekitar 88%
-- Precision dan recall yang baik terutama untuk kelas positif
-- Confusion matrix yang memvisualisasikan performa model
-- Contoh prediksi:
-  - "Aplikasi Shopee jelek sekali, loadingnya lemot dan sering keluar sendiri!" → Negatif
-  - "Sangat puas belanja di sini, barang cepat sampai dan banyak diskon gratis ongkir!" → Positif
+- Test accuracy for the main model: around 88%
+- Strong precision and recall for the positive class
+- Confusion matrix visualization
+- Example predictions:
+  - "Aplikasi Shopee jelek sekali, loadingnya lemot dan sering keluar sendiri!" → Negative
+  - "Sangat puas belanja di sini, barang cepat sampai dan banyak diskon gratis ongkir!" → Positive
 
-## Proses Upload ke GitHub
+## GitHub Repository Description
 
-1. Buat repository baru di GitHub dengan nama misalnya `sentimen-nlp`.
-2. Tambahkan deskripsi singkat: `Analisis sentimen review Shopee Bahasa Indonesia menggunakan NLP dan machine learning.`
-3. Di folder project lokal, jalankan:
+Use this description for the GitHub repo settings:
+
+`Sentiment analysis for Shopee reviews in Indonesian using NLP and machine learning.`
+
+## How to Publish on GitHub
+
+1. Create a new repository on GitHub named `sentimen-nlp` or `SentimenNL`.
+2. Add a short repository description, for example:
+   - `Sentiment analysis for Shopee reviews in Indonesian using NLP and machine learning.`
+3. From the project folder, initialize Git if needed:
 
    ```powershell
    git init
@@ -93,17 +96,19 @@ Notebook menampilkan hasil berikut (perkiraan berdasarkan output latihan):
    git push -u origin main
    ```
 
-4. Pastikan file `README.md`, `requirements.txt`, `pelatihan_dan_inferensi.ipynb`, dan `dataset_shopee.csv` ada di repo.
-5. Buka halaman GitHub repository, dan verifikasi README sudah tampil dengan baik.
+4. Confirm that the files appear in the GitHub repository and that the README renders correctly.
 
-## Kontak
+## Portfolio Notes
 
-Jika ingin menambahkan informasi personal, tambahkan di README:
+- Use a public repo name such as `sentimen-nlp`.
+- Include a clear repository description.
+- If possible, add a screenshot or summary of results in the README.
+- Add a short section about what you learned: NLP preprocessing, dataset cleaning, model evaluation, and practical performance tradeoffs.
 
-- Nama: [Ridho Rezky Anwar]
-- Email: [ridhorezkyanwar122@gmail.com]
-- LinkedIn: [https://linkedin.com/in/ridho-rezky-anwar-98bb3a370]
+## Contact
 
----
+Add your own contact details here:
 
-README ini dibuat sebagai dokumentasi portfolio untuk project SentimenNLP.
+- Name: [Your Name]
+- Email: [email@example.com]
+- LinkedIn: [Your LinkedIn URL]
