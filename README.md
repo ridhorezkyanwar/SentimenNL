@@ -98,17 +98,11 @@ Use this description for the GitHub repo settings:
 
 4. Confirm that the files appear in the GitHub repository and that the README renders correctly.
 
-## Portfolio Notes
-
-- Use a public repo name such as `sentimen-nlp`.
-- Include a clear repository description.
-- If possible, add a screenshot or summary of results in the README.
-- Add a short section about what you learned: NLP preprocessing, dataset cleaning, model evaluation, and practical performance tradeoffs.
 
 ## Contact
 
 Add your own contact details here:
 
-- Name: [Your Name]
-- Email: [email@example.com]
-- LinkedIn: [Your LinkedIn URL]
+- Name: [Ridho Rezky Anwar]
+- Email: [ridhorezkyanwar122@gmail.com]
+- LinkedIn: [https://linkedin.com/in/ridho-rezky-anwar-98bb3a370]
