@@ -76,8 +76,6 @@ The notebook reports:
 
 ## GitHub Repository Description
 
-Use this description for the GitHub repo settings:
-
 `Sentiment analysis for Shopee reviews in Indonesian using NLP and machine learning.`
 
 ## How to Publish on GitHub
@@ -101,8 +99,6 @@ Use this description for the GitHub repo settings:
 
 ## Contact
 
-Add your own contact details here:
-
 - Name: [Ridho Rezky Anwar]
-- Email: [ridhorezkyanwar122@gmail.com]
+- Email: [ridhorezky.dev@gmail.com]
 - LinkedIn: [https://linkedin.com/in/ridho-rezky-anwar-98bb3a370]
