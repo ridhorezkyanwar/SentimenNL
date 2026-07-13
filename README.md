@@ -96,20 +96,13 @@ Notebook menampilkan hasil berikut (perkiraan berdasarkan output latihan):
 4. Pastikan file `README.md`, `requirements.txt`, `pelatihan_dan_inferensi.ipynb`, dan `dataset_shopee.csv` ada di repo.
 5. Buka halaman GitHub repository, dan verifikasi README sudah tampil dengan baik.
 
-## Saran untuk Portfolio
-
-- Gunakan judul repository `sentimen-nlp` atau `analisis-sentimen-shopee`.
-- Tambahkan deskripsi repository yang jelas.
-- Sertakan screenshot atau ringkasan hasil evaluasi di README jika memungkinkan.
-- Tambahkan bagian "Apa yang saya pelajari" untuk menjelaskan pengalaman Anda dengan NLP, preprocessing, dan evaluasi model.
-
 ## Kontak
 
 Jika ingin menambahkan informasi personal, tambahkan di README:
 
-- Nama: [Nama Anda]
-- Email: [email@example.com]
-- LinkedIn: [link LinkedIn]
+- Nama: [Ridho Rezky Anwar]
+- Email: [ridhorezkyanwar122@gmail.com]
+- LinkedIn: [https://linkedin.com/in/ridho-rezky-anwar-98bb3a370]
 
 ---
 
