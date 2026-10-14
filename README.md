@@ -12,7 +12,7 @@ This repository includes:
 - `pelatihan_dan_inferensi.ipynb`: notebook for training, evaluation, and inference
 - `scraping.py`: optional script for collecting additional review data
 - `requirements.txt`: Python dependencies
-- `model_sentimen_terbaik.h5`: saved model produced by the notebook
+- `model_sentimen_terbaik.pkl`: serialized Logistic Regression model and fitted TF-IDF vectorizer produced by the notebook
 
 ## Key Features
 
@@ -20,6 +20,7 @@ This repository includes:
 - Handling of Shopee-specific slang and basic stopwords
 - Stratified train/test split
 - TF-IDF feature extraction with n-grams
+- Binary sentiment classification: negative (ratings 1-2) and positive (ratings 4-5); neutral (rating 3) is excluded
 - Training multiple models: Logistic Regression, Random Forest, Deep Neural Network
 - Evaluation with accuracy, precision, recall, F1-score, and confusion matrix
 - Real-time inference examples using saved model
@@ -61,15 +62,14 @@ This repository includes:
 
 - Open `pelatihan_dan_inferensi.ipynb` and run the cells in order.
 - The notebook loads the dataset, cleans the text, trains models, evaluates performance, and runs example predictions.
-- To use the saved model manually, load `model_sentimen_terbaik.h5` with Python and apply the saved TF-IDF vectorizer.
+- To use the saved model manually, load `model_sentimen_terbaik.pkl` with Python and apply the saved TF-IDF vectorizer.
 
 ## Results
 
 The notebook reports:
 
-- Test accuracy for the main model: around 88%
-- Strong precision and recall for the positive class
-- Confusion matrix visualization
+- The previous recorded Logistic Regression run reported 88.22% test accuracy and macro F1 of about 0.85 on its 80/20 split.
+- Re-run the notebook after the binary-label cleanup to regenerate current outputs and verify the metrics before citing them.
 - Example predictions:
   - "Aplikasi Shopee jelek sekali, loadingnya lemot dan sering keluar sendiri!" → Negative
   - "Sangat puas belanja di sini, barang cepat sampai dan banyak diskon gratis ongkir!" → Positive
