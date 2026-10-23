@@ -1,115 +1,70 @@
-﻿# SentimenNLP
+# SentimenNLP — Analisis Sentimen Ulasan Shopee
 
-<p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=18&duration=2600&pause=850&color=58A6FF&center=true&vCenter=true&width=520&lines=Build+%E2%80%A2+Test+%E2%80%A2+Improve" alt="Animated banner: Build, Test, Improve" />
-</p>
-<p align="center">
-  <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python badge" />
-  <img src="https://img.shields.io/badge/pandas-150458?style=flat-square&logo=pandas&logoColor=white" alt="pandas badge" />
-  <img src="https://img.shields.io/badge/scikit-learn-F7931E?style=flat-square&logo=scikitlearn&logoColor=white" alt="scikit-learn badge" />
-  <img src="https://img.shields.io/badge/TensorFlow-FF6F00?style=flat-square&logo=tensorflow&logoColor=white" alt="TensorFlow badge" />
+<p>
+  <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python" />
+  <img src="https://img.shields.io/badge/pandas-150458?style=flat-square&logo=pandas&logoColor=white" alt="pandas" />
+  <img src="https://img.shields.io/badge/scikit--learn-F7931E?style=flat-square&logo=scikitlearn&logoColor=white" alt="scikit-learn" />
+  <img src="https://img.shields.io/badge/TensorFlow-FF6F00?style=flat-square&logo=tensorflow&logoColor=white" alt="TensorFlow" />
 </p>
 
+This project demonstrates an NLP workflow for classifying Indonesian-language Shopee reviews as positive or negative. It includes preprocessing, slang normalization, TF-IDF feature extraction, model training, and evaluation in a Jupyter notebook.
 
-## Description
+## Dataset and label policy
 
-SentimenNLP is a sentiment analysis project for Shopee reviews in Indonesian. It demonstrates an end-to-end NLP workflow: loading and cleaning review data, normalizing slang, extracting TF-IDF features, training classification models, and evaluating performance.
+- Reviews with ratings 1–2 are treated as **negative**.
+- Reviews with ratings 4–5 are treated as **positive**.
+- Rating 3 reviews are excluded from the binary classification task.
 
-## Project Overview
+## Repository contents
 
-This repository includes:
+- `dataset_shopee.csv` — the committed review dataset.
+- `pelatihan_dan_inferensi.ipynb` — notebook for preprocessing, training, evaluation, and example inference.
+- `scraping.py` — optional script that attempts to collect Indonesian Shopee reviews through Google Play review data.
+- `requirements.txt` — Python dependencies.
 
-- `dataset_shopee.csv`: Shopee review dataset
-- `pelatihan_dan_inferensi.ipynb`: notebook for training, evaluation, and inference
-- `scraping.py`: optional script for collecting additional review data
-- `requirements.txt`: Python dependencies
-- `model_sentimen_terbaik.pkl`: serialized Logistic Regression model and fitted TF-IDF vectorizer produced by the notebook
+The current repository root does not contain the serialized `model_sentimen_terbaik.pkl` file mentioned in an earlier version of this README. Run the notebook to recreate models and results rather than assuming a trained artifact is already available.
 
-## Key Features
+## Setup
 
-- Indonesian text preprocessing and normalization
-- Handling of Shopee-specific slang and basic stopwords
-- Stratified train/test split
-- TF-IDF feature extraction with n-grams
-- Binary sentiment classification: negative (ratings 1-2) and positive (ratings 4-5); neutral (rating 3) is excluded
-- Training multiple models: Logistic Regression, Random Forest, Deep Neural Network
-- Evaluation with accuracy, precision, recall, F1-score, and confusion matrix
-- Real-time inference examples using saved model
+Use Python and pip. A virtual environment is recommended.
 
-## Technology Stack
+**Windows PowerShell**
 
-- Python 3
-- pandas
-- numpy
-- scikit-learn
-- tensorflow
-- matplotlib
-- seaborn
-- google-play-scraper
+```powershell
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+python -m pip install -r requirements.txt
+```
 
-## Installation
+**Linux / macOS**
 
-1. Open a terminal in the project folder.
-2. Create and activate a virtual environment (recommended):
+```bash
+python -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements.txt
+```
 
-   ```powershell
-   python -m venv .venv
-   .\.venv\Scripts\Activate
-   ```
+Install Jupyter if it is not available in the environment, then open the notebook:
 
-3. Install dependencies:
+```bash
+python -m pip install jupyter
+jupyter notebook pelatihan_dan_inferensi.ipynb
+```
 
-   ```powershell
-   pip install -r requirements.txt
-   ```
+Run the notebook cells in order. It loads the dataset, preprocesses text, fits the selected models, evaluates predictions, and demonstrates inference.
 
-4. Start the notebook:
+## Results and reproducibility
 
-   ```powershell
-   jupyter notebook pelatihan_dan_inferensi.ipynb
-   ```
+An earlier README revision recorded 88.22% test accuracy and macro-F1 of about 0.85 for Logistic Regression on an 80/20 split. The same note says the labels were subsequently cleaned up; therefore, those figures should be treated as historical, not as verified current performance. Re-run the notebook and refresh the reported metrics before using them as a benchmark.
 
-## Usage
+## Limitations
 
-- Open `pelatihan_dan_inferensi.ipynb` and run the cells in order.
-- The notebook loads the dataset, cleans the text, trains models, evaluates performance, and runs example predictions.
-- To use the saved model manually, load `model_sentimen_terbaik.pkl` with Python and apply the saved TF-IDF vectorizer.
-
-## Results
-
-The notebook reports:
-
-- The previous recorded Logistic Regression run reported 88.22% test accuracy and macro F1 of about 0.85 on its 80/20 split.
-- Re-run the notebook after the binary-label cleanup to regenerate current outputs and verify the metrics before citing them.
-- Example predictions:
-  - "Aplikasi Shopee jelek sekali, loadingnya lemot dan sering keluar sendiri!" → Negative
-  - "Sangat puas belanja di sini, barang cepat sampai dan banyak diskon gratis ongkir!" → Positive
-
-## GitHub Repository Description
-
-`Sentiment analysis for Shopee reviews in Indonesian using NLP and machine learning.`
-
-## How to Publish on GitHub
-
-1. Create a new repository on GitHub named `sentimen-nlp` or `SentimenNL`.
-2. Add a short repository description, for example:
-   - `Sentiment analysis for Shopee reviews in Indonesian using NLP and machine learning.`
-3. From the project folder, initialize Git if needed:
-
-   ```powershell
-   git init
-   git add .
-   git commit -m "Initial commit: add SentimenNLP project"
-   git branch -M main
-   git remote add origin https://github.com/<username>/sentimen-nlp.git
-   git push -u origin main
-   ```
-
-4. Confirm that the files appear in the GitHub repository and that the README renders correctly.
-
+- Classification is binary; neutral reviews are excluded by the label policy above.
+- Model performance depends on the dataset split, preprocessing, and label quality.
+- The scraping script depends on an external review source and may be limited or break as that source changes.
+- This notebook is a learning and experimentation project, not a production review-moderation service.
 
 ## Contact
 
-- Name: [Ridho Rezky Anwar]
-- Email: [ridhorezky.dev@gmail.com]
-- LinkedIn: [https://linkedin.com/in/ridho-rezky-anwar-98bb3a370]
+- Email: [ridhorezky.dev@gmail.com](mailto:ridhorezky.dev@gmail.com)
+- LinkedIn: [Ridho Rezky Anwar](https://linkedin.com/in/ridho-rezky-anwar-98bb3a370)
