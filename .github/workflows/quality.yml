@@ -1,0 +1,49 @@
+name: SentimenNLP quality checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  data-quality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Set up Python
+        uses: actions/setup-python@83679a892e2d95755f2dac6acb0bfd1e9ac5d548 # v6.1.0
+        with:
+          python-version: "3.12"
+      - name: Compile privacy utility and tests
+        run: python -m compileall -q privacy.py scraping.py tests/
+      - name: Run privacy regression tests
+        run: python -m unittest discover -s tests -v
+      - name: Validate committed dataset schema and privacy
+        run: |
+          python <<'PY'
+          import csv
+          from pathlib import Path
+          from privacy import scrub_personal_data
+
+          path = Path("dataset_shopee.csv")
+          with path.open(encoding="utf-8", newline="") as source:
+              rows = list(csv.DictReader(source))
+
+          assert rows, "Dataset must contain at least one review."
+          assert set(rows[0]) == {"content", "score"}, "Unexpected dataset columns."
+          assert len(rows) >= 10_000, f"Expected at least 10,000 rows, got {len(rows)}."
+          for index, row in enumerate(rows, start=2):
+              assert row["content"].strip(), f"Empty review at CSV line {index}."
+              assert row["score"].isdigit() and 1 <= int(row["score"]) <= 5, f"Invalid rating at line {index}."
+              assert scrub_personal_data(row["content"]) == row["content"], f"Unredacted contact pattern at line {index}."
+          print(f"PASS: {len(rows)} reviews, valid columns and labels, no detected contact patterns.")
+          PY
