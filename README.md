@@ -17,7 +17,8 @@ This project demonstrates an NLP workflow for classifying Indonesian-language Sh
 
 ## Repository contents
 
-- `dataset_shopee.csv` — the committed review dataset.
+- `dataset_shopee.csv` — the committed review dataset (contact-like strings are redacted before committing).
+- `privacy.py` and `tests/test_privacy.py` — standard-library personal-data redaction and regression checks.
 - `pelatihan_dan_inferensi.ipynb` — notebook for preprocessing, training, evaluation, and example inference.
 - `scraping.py` — optional script that attempts to collect Indonesian Shopee reviews through Google Play review data.
 - `requirements.txt` — Python dependencies.
@@ -62,6 +63,7 @@ An earlier README revision recorded 88.22% test accuracy and macro-F1 of about 0
 - Classification is binary; neutral reviews are excluded by the label policy above.
 - Model performance depends on the dataset split, preprocessing, and label quality.
 - The scraping script depends on an external review source and may be limited or break as that source changes.
+- The scraper redacts email-like strings and likely Indonesian phone numbers from review text; the committed dataset is checked by CI for those patterns.
 - This notebook is a learning and experimentation project, not a production review-moderation service.
 
 ## Contact
