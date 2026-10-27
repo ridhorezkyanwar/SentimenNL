@@ -1,4 +1,5 @@
 from google_play_scraper import Sort, reviews
+from privacy import scrub_personal_data
 import pandas as pd
 import time
 
@@ -38,8 +39,9 @@ def scrape_data():
     # Ambil hanya kolom teks ulasan dan rating bintang
     df = df[["content", "score"]]
     df = df.dropna()
+    df["content"] = df["content"].astype(str).map(scrub_personal_data)
 
-    # Simpan ke CSV
+    # Simpan hanya teks ulasan yang telah disamarkan dan rating.
     df.to_csv("dataset_shopee.csv", index=False)
     print(f"Scraping selesai! Total data tersimpan: {len(df)}")
 
